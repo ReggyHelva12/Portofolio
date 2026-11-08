@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" id="theme-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Project - Reggy Helva Rezal</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+    </script>
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center text-white font-black text-sm">
+                    RHR
+                </div>
+                <span class="hidden sm:block text-sm font-bold text-slate-900 dark:text-white">
+                    Reggy Helva Rezal
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="index.html" class="hover:text-sky-500">Beranda</a>
+                <a href="tentang.html" class="hover:text-sky-500">Tentang Saya</a>
+                <a href="portofolio.html" class="text-sky-500 font-semibold">Portofolio Project</a>
+                <a href="pendidikan.html" class="hover:text-sky-500">Pendidikan</a>
+                <a href="pengalaman.html" class="hover:text-sky-500">Pengalaman</a>
+                <a href="sertifikat.html" class="hover:text-sky-500">Sertifikat</a>
+
+                <button id="theme-toggle" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+            </nav>
+
+            <div class="flex items-center gap-2 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+                <button id="mobile-menu-btn" class="p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 px-4 py-3 space-y-2">
+        <a href="index.html" class="block py-2">Beranda</a>
+        <a href="tentang.html" class="block py-2">Tentang Saya</a>
+        <a href="portofolio.html" class="block py-2 text-sky-500 font-semibold">Portofolio Project</a>
+        <a href="pendidikan.html" class="block py-2">Pendidikan</a>
+        <a href="pengalaman.html" class="block py-2">Pengalaman</a>
+        <a href="sertifikat.html" class="block py-2">Sertifikat</a>
+    </div>
+</header>
+
+<!-- KONTEN UTAMA -->
+<main class="flex-grow py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- JUDUL -->
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+                Portofolio
+                <span class="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
+                    Project
+                </span>
+            </h1>
+
+            <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
+                Kumpulan proyek pengembangan sistem informasi, aplikasi berbasis web,
+                sistem penunjang keputusan, serta antarmuka mobile.
+            </p>
+        </div>
+
+        <!-- FILTER KATEGORI -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+
+            <button onclick="filterProjects('all')"
+                data-filter="all"
+                class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all">
+                Semua Project
+            </button>
+
+            <button onclick="filterProjects('web')"
+                data-filter="web"
+                class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all">
+                Web Developer
+            </button>
+
+            <button onclick="filterProjects('uiux')"
+                data-filter="uiux"
+                class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all">
+                UI/UX Design
+            </button>
+
+            <button onclick="filterProjects('data')"
+                data-filter="data"
+                class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all">
+                Data Analyst
+            </button>
+
+        </div>
+
+        <!-- DAFTAR PROJECT -->
+        <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- PROJECT 1 -->
+            <article class="project-card bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-xl transition-all"
+                data-category="uiux">
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+                            UI/UX Design
+                        </span>
+                        <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Mobile Apps Whisker Wonderland
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        UI/UX aplikasi grooming dan toko kebutuhan hewan peliharaan.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-tag">Figma</span>
+                        <span class="tech-tag">UI Design</span>
+                        <span class="tech-tag">User Flow</span>
+                        <span class="tech-tag">Prototyping</span>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <span><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2024</span>
+                    <a href="detail-projectwhisker.html" class="text-sky-600 dark:text-sky-400 font-medium hover:underline flex items-center gap-1">
+    Lihat Selengkapnya
+</a>
+                </div>
+            </article>
+
+            <!-- PROJECT 2 -->
+            <article class="project-card bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-xl transition-all"
+                data-category="uiux">
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="project-badge">UI/UX Design</span>
+                        <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Mobile Apps Runix
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Aplikasi untuk tracking olahraga lari dan informasi event lari.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">UX Research</span>
+                        <span class="tech-tag">Usability Testing</span>
+                        <span class="tech-tag">UI Design</span>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <span><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2025</span>
+                    <a href="detail-projectRunix.html" class="text-sky-600 dark:text-sky-400 font-medium hover:underline flex items-center gap-1">
+    Lihat Selengkapnya
+</a>
+                </div>
+            </article>
+
+            <!-- PROJECT 3 -->
+            <article class="project-card bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-xl transition-all"
+                data-category="uiux">
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="project-badge">UI/UX Design</span>
+                        <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Mobile Apps Daur Cuan
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Aplikasi bank sampah digital untuk mendukung pengelolaan sampah.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-tag">UI Design</span>
+                        <span class="tech-tag">Usability Testing</span>
+                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">UX Research</span>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <span><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2026</span>
+                    <a href="detail-projectDaurcuan.html" class="text-sky-600 dark:text-sky-400 font-medium hover:underline flex items-center gap-1">
+    Lihat Selengkapnya
+</a>
+                </div>
+            </article>
+
+            <!-- PROJECT 4 -->
+            <article class="project-card bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-xl transition-all"
+                data-category="uiux">
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="project-badge">UI/UX Design</span>
+                        <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Mobile Apps Collabify
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Platform pencarian magang dan tenaga kerja.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-tag">UI Design</span>
+                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">Usability Testing</span>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <span><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2025</span>
+                    <a href="detail-projectCollabify.html" class="text-sky-600 dark:text-sky-400 font-medium hover:underline flex items-center gap-1">
+    Lihat Selengkapnya
+</a>
+                </div>
+            </article>
+
+            <!-- PROJECT 5 -->
+            <article class="project-card bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-xl transition-all"
+                data-category="uiux">
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="project-badge">UI/UX Design</span>
+                        <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Mobile Apps Emopals
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Aplikasi edukasi pengenalan dan penyampaian emosi pada anak.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-tag">UI Design</span>
+                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">Usability Testing</span>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <span><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2025</span>
+                    <a href="detail-projectEmopals.html" class="text-sky-600 dark:text-sky-400 font-medium hover:underline flex items-center gap-1">
+    Lihat Selengkapnya
+</a>
+                </div>
+            </article>
+
+            <!-- PROJECT 6 -->
+            <article class="project-card bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-xl transition-all"
+                data-category="uiux web">
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="project-badge">UI/UX Design</span>
+                        <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Website HIMSI Cutmutia & Kalimalang
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Website company profile, pusat informasi, dan kegiatan organisasi.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-tag">UI Design</span>
+                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">Usability Testing</span>
+                        <span class="tech-tag">UX Research</span>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <span><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2025</span>
+                    <span class="text-sky-600 dark:text-sky-400 font-medium">Lihat Selengkapnya</span>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- PESAN KATEGORI KOSONG -->
+        <div id="no-projects" class="hidden text-center py-12">
+            <i data-lucide="folder-open" class="w-10 h-10 mx-auto mb-3 text-slate-400"></i>
+            <h3 class="font-semibold text-lg">Belum ada proyek pada kategori ini</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                Proyek akan muncul setelah ditambahkan ke kategori yang sesuai.
+            </p>
+        </div>
+
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-200 dark:border-slate-800 py-6 text-center text-slate-500 text-sm">
+    <p>&copy; 2026 Reggy Helva Rezal. All rights reserved.</p>
+</footer>
+
+<style>
+    .tech-tag {
+        padding: 6px 10px;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        color: #334155;
+        font-size: 12px;
+        border-radius: 6px;
+        font-family: monospace;
+    }
+
+    .dark .tech-tag {
+        background: #0f172a;
+        border-color: #334155;
+        color: #cbd5e1;
+    }
+
+    .project-badge {
+        padding: 4px 12px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        color: #6366f1;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 9999px;
+    }
+
+    .project-footer {
+        padding: 16px 24px;
+        background: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+        color: #64748b;
+    }
+
+    .dark .project-footer {
+        background: rgba(15, 23, 42, 0.5);
+        border-color: #334155;
+        color: #94a3b8;
+    }
+
+    .project-footer span:first-child {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .filter-btn {
+        background: white;
+        border: 1px solid #e2e8f0;
+        color: #334155;
+    }
+
+    .dark .filter-btn {
+        background: #1e293b;
+        border-color: #334155;
+        color: #cbd5e1;
+    }
+
+    .filter-btn.active {
+        background: #0ea5e9;
+        color: white;
+        border-color: #0ea5e9;
+        box-shadow: 0 8px 15px rgba(14, 165, 233, 0.2);
+    }
+</style>
+
+<script>
+    // Inisialisasi Lucide Icons
+    lucide.createIcons();
+
+    // Menu mobile
+    const menuButton = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Dark mode
+    const htmlElement = document.getElementById('theme-html');
+    const themeButtons = [
+        document.getElementById('theme-toggle'),
+        document.getElementById('theme-toggle-mobile')
+    ];
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+
+    if (savedTheme === 'dark') {
+        htmlElement.classList.add('dark');
+    } else {
+        htmlElement.classList.remove('dark');
+    }
+
+    function updateThemeIcons() {
+        themeButtons.forEach(button => {
+            if (!button) return;
+
+            button.innerHTML = htmlElement.classList.contains('dark')
+                ? '<i data-lucide="sun" class="w-5 h-5 text-amber-400"></i>'
+                : '<i data-lucide="moon" class="w-5 h-5 text-sky-600"></i>';
+        });
+
+        lucide.createIcons();
+    }
+
+    function toggleTheme() {
+        htmlElement.classList.toggle('dark');
+
+        const theme = htmlElement.classList.contains('dark')
+            ? 'dark'
+            : 'light';
+
+        localStorage.setItem('theme', theme);
+        updateThemeIcons();
+    }
+
+    themeButtons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', toggleTheme);
+        }
+    });
+
+    updateThemeIcons();
+
+    // FILTER PROJECT
+    function filterProjects(category) {
+        const cards = document.querySelectorAll('.project-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+        const noProjects = document.getElementById('no-projects');
+
+        let visibleCount = 0;
+
+        // Atur tombol aktif
+        buttons.forEach(button => {
+            const isActive = button.dataset.filter === category;
+            button.classList.toggle('active', isActive);
+        });
+
+        // Filter kartu berdasarkan kategori
+        cards.forEach(card => {
+            const categories = (card.dataset.category || '').split(/\s+/);
+
+            const showCard =
+                category === 'all' || categories.includes(category);
+
+            card.style.display = showCard ? 'flex' : 'none';
+
+            if (showCard) {
+                visibleCount++;
+            }
+        });
+
+        // Pesan jika tidak ada proyek
+        noProjects.classList.toggle('hidden', visibleCount > 0);
+    }
+
+    // Tampilkan seluruh proyek saat halaman dibuka
+    filterProjects('all');
+</script>
+
+</body>
+</html>
